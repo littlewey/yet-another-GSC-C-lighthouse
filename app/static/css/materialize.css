@@ -8580,3 +8580,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     margin-bottom: 5em;
   }
 }
+
+input[type="search"] {
+  height: 64px !important; /* or height of nav */
+}
