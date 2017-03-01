@@ -25,6 +25,6 @@ Icon
 .AppleDesktop
 Network Trash Folder
 Temporary Items
-
+*.pye
 *.pyc
 ./app/*.pyc
