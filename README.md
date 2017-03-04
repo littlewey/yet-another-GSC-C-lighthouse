@@ -9,11 +9,7 @@ pip install openpyxl
 pip install html2text
 pip install Flask-WhooshAlchemy
 pip install sqlalchemy-migrate
-# Setup mysql
+# Setup sqlite
 ```
-#mysql -u <user> -p <password>
-mysql> create table tools(
-
-        );
-
+./db_create.py
 ```
