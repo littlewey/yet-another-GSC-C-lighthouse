@@ -6,7 +6,9 @@ Frontend framework Materialize was used
 Python html2text by Aaron Swartz was used: https://github.com/aaronsw/html2text
 pip install flask
 pip install openpyxl
-
+pip install html2text
+pip install Flask-WhooshAlchemy
+pip install sqlalchemy-migrate
 # Setup mysql
 ```
 #mysql -u <user> -p <password>
