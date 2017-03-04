@@ -8,4 +8,5 @@ CSRF_ENABLED = True
 SECRET_KEY = 'lalala'
 
 
-
+# pagination
+POSTS_PER_PAGE = 10
