@@ -10,7 +10,14 @@ pip install html2text
 pip install Flask-WhooshAlchemy-Redux
 pip install sqlalchemy-migrate
 pip install flask_wtf
-# Setup sqlite
+# A fresh setup sqlite
 ```
 ./db_create.py
+./dataMigrate.py
+./run.py
+```
+# Cleanup
+```
+rm -fr *.db
+rm -fr db_repository
 ```
