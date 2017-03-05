@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 import html2text
 html2textCall = html2text.html2text
+html2text.BYPASS_TABLES = True
 import sys, re
 from openpyxl import load_workbook
 reload(sys)
@@ -43,7 +44,7 @@ def validateKeyWordLists(strKeyWordList):
 columnZ = []
 for cell in worksheetInRAM['Z']:
     columnZ.append(html2textCall(cell.value))
-
+#    columnZ.append(cell.value)
 # filter names of Developer
 columnU = []
 for cell in worksheetInRAM['U']:
@@ -136,16 +137,16 @@ for toolIndex in range(1, len(data_ToolName)):
     thisTool = models.Tool(
         ServiceArea  = data_ServiceArea[toolIndex] , 
         NameString  = data_ToolName[toolIndex] , 
-        DeveloperList  = str(data_Developer[toolIndex]) , 
-        KeyWordList  = str(data_KeyWords[toolIndex]) , 
-        InnovatorName  = str(data_InnovatorName[toolIndex]) , 
+        DeveloperList  = ", ".join(data_Developer[toolIndex]) , 
+        KeyWordList  = ", ".join(data_KeyWords[toolIndex]) , 
+        InnovatorName  = ", ".join(data_InnovatorName[toolIndex]) , 
         Description  = data_Description[toolIndex] , 
         ToolUrlOnLightHouse  = data_ToolUrlOnLightHouse[toolIndex] , 
         Rates  = data_Rates[toolIndex] , 
         DownloadTimes  = data_DownloadTimes[toolIndex] , 
         ImplementedDate  = data_ImplementedDate[toolIndex] 
         )
-#   print str(data_KeyWords[toolIndex])
+#   print ", ".join(data_KeyWords[toolIndex])
 #   print thisTool
     
     db.session.add(thisTool)

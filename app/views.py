@@ -27,6 +27,7 @@ def search_results(query, page = 1):
     ]
     return render_template('search_results.html',
         query = query,
+        title=query + "search results",
         toolScope = results,
         pagination = pagination,
         tabs = tabs,
@@ -47,12 +48,12 @@ def tool(page = 1, query = 'all'):
         },
     ]
     return render_template("tool.html",
-                           toolScope=tools,
-                           pagination=pagination,
-                           tabs=tabs,
-                           endpoint='tool',
-                           query = 'all'
-                           )
+                            toolScope=tools,
+                            pagination=pagination,
+                            tabs=tabs,
+                            endpoint='tool',
+                            query = 'all'
+                            )
 
 @app.route('/developer/<developerName>')
 def developer(developerName):
