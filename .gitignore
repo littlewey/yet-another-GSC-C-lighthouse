@@ -29,5 +29,6 @@ Temporary Items
 
 env
 data
-app.db
 db_repository
+*.db/
+*.db

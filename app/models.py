@@ -1,6 +1,15 @@
-from app import db
+from app import db, app
+from sqlalchemy import desc
+import sys
+
+if sys.version_info >= (3, 0):
+    enable_search = False
+else:
+    enable_search = True
+    import flask_whooshalchemy as whooshalchemy
 
 class Tool(db.Model):
+    __searchable__ = ['NameString','DeveloperList','KeyWordList','Description']
     id = db.Column(db.Integer, primary_key = True)
     ServiceArea = db.Column(db.String(16), index = True, unique = False)
     NameString = db.Column(db.String(64), index = True, unique = False)
@@ -17,6 +26,9 @@ class Tool(db.Model):
 
     def __repr__(self):
         return '<Tool %r>' % (self.NameString)
+
+if enable_search:
+    whooshalchemy.whoosh_index(app, Tool)
 
 class Developer(db.Model):
     id = db.Column(db.Integer, primary_key = True)

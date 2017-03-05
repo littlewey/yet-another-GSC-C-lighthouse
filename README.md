@@ -7,8 +7,9 @@ Python html2text by Aaron Swartz was used: https://github.com/aaronsw/html2text
 pip install flask
 pip install openpyxl
 pip install html2text
-pip install Flask-WhooshAlchemy
+pip install Flask-WhooshAlchemy-Redux
 pip install sqlalchemy-migrate
+pip install flask_wtf
 # Setup sqlite
 ```
 ./db_create.py

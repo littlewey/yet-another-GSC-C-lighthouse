@@ -24,36 +24,29 @@
 			<div class="col s12 m4 l2">
 				<a href="#" class="brand-logo">Logo</a>
 			</div>
-			<div class="col s12 m4 l8">
-				<form style="height:64px">
-				<div class="input-field teal lighten-3 z-depth-2" >
-					<input id="search" type="search" required>
-					<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-					<i class="material-icons">close</i>
-				</div>
+
+			<div class="col s12 m4 l8 nav-wrapper focused">
+				<form style="height:64px" action="{{ url_for('search') }}" method="POST">
+					<div class="input-field teal lighten-3 z-depth-2">
+						<input id="search" type="search"  name="search" >
+						<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+					</div>
 				</form>
 			</div>
+			<!--   login part
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a href="foo.html">foo</a></li>
 				<li><a href="bar.html">bar</a></li>
 			</ul>
+			//-->
 		</div>
     </div>
 
     <div class="nav-content">
 		<ul class="tabs tabs-transparent">
-    {% for tab in tabs %}
-			<li class="tab"><a href="#{{tab.tab_href}}">{{tab.Name}}</a></li>
-	{% endfor %}
 
     {% block content %}{% endblock %}
-    
-		</ul>
-    </div>
-  </nav>
-
-
-
 
 
     <!--Import jQuery before materialize.js-->
