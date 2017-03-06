@@ -10,15 +10,15 @@ from config import MAX_SEARCH_RESULTS
 def search():
     search_form = SearchForm()
     g.search_form = search_form
-    print type(g.search_form.search.data)
+    #print type(g.search_form.search.data)
     return redirect(url_for('search_results', query = g.search_form.search.data , page = 1 ))
 
 @app.route('/search_results/<query>/<int:page>')
 def search_results(query, page = 1):
     pagination = models.Tool.query.whoosh_search(query, MAX_SEARCH_RESULTS, or_=True).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
-    print pagination
+    #print pagination
     results = pagination.items
-    print results
+    #print results
     tabs = [  # fake array of tabs
         {
             'tab_href': 'all',
@@ -74,7 +74,7 @@ def developer(developerName):
             'Name': 'all',
         },
     ]
-    print type(developerName)
+    #print type(developerName)
     return render_template("developer.html",
                            title=developerName + "created tools",
                            developer=developer,
