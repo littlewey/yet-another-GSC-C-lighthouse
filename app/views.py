@@ -27,7 +27,7 @@ def search_results(query, page = 1):
     ]
     return render_template('search_results.html',
         query = query,
-        title=query + "search results",
+        title=query + " search results",
         toolScope = results,
         pagination = pagination,
         tabs = tabs,
@@ -76,7 +76,7 @@ def developer(developerName):
     ]
     #print type(developerName)
     return render_template("developer.html",
-                           title=developerName + "created tools",
+                           title=developerName + " created tools",
                            developer=developer,
                            tools=tools,
                            tabs=tabs)
