@@ -3,27 +3,18 @@
 
 
     {% for tab in tabs %}
-    {% if pageIter %}
-    {% else %}
-        {% set pageIter = 1 %}
-    {% endif %}
-    
-    {% if query%}
-    {% else %}
-        {% set query = 'all' %}
-    {% endif %}
     <li class="tab">
-        <a target="_self" 
+        <a target="_self"
            {% if tab.Name == serviceArea %} class="active" {% endif %}
             href="{{url_for(endpoint,serviceArea=tab.tab_href, query=query, page=pageIter)}}"
         >
         {{tab.Name}}
         </a></li>
+
     {% endfor %}
         </ul>
     </div>
   </nav>
-    
 
 {% include 'tools.html' %}
 

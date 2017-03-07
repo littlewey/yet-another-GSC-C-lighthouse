@@ -23,13 +23,13 @@
     <div class="nav-wrapper">
         <div class="row">
             <div class="col s12 m4 l2">
-                <a href="#" class="brand-logo">{{SiteNameString}}</a>
+                <a href="/" class="brand-logo">{{SiteNameString}}</a>
             </div>
 
             <div class="col s12 m4 l8 nav-wrapper focused">
                 <form style="height:64px" action="{{ url_for('search') }}" method="POST">
                     <div class="input-field teal lighten-5 z-depth-2">
-                        <input id="search" type="search"  name="search" >
+                        <input id="search" type="search" {% if query %} placeholder= "{{query}}" {% endif %} name="search" >
                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                         <i class="material-icons">close</i>
                     </div>
