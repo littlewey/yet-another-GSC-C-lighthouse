@@ -14,7 +14,7 @@ WHOOSH_BASE = os.path.join(basedir, 'search.db')
 MAX_SEARCH_RESULTS = 500
 
 # pagination
-TOOLS_PER_PAGE = 20
+TOOLS_PER_PAGE = 13
 
 SiteNameString = 'innoSearch'
 tabs = [{'tab_href': 'all','Name': 'all',},
