@@ -18,8 +18,8 @@ TOOLS_PER_PAGE = 13
 
 SiteNameString = 'innoSearch'
 tabs = [{'tab_href': 'all','Name': 'all',},
-        {'tab_href': 'NDO','Name': 'NDO',},
         {'tab_href': 'CSI','Name': 'CSI',},
+        {'tab_href': 'NDO','Name': 'NDO',},
         {'tab_href': 'Customer Support','Name': 'Customer Support',},
         {'tab_href': 'Operational','Name': 'Operational',},
         {'tab_href': 'Managed Service','Name': 'Managed Service',}]

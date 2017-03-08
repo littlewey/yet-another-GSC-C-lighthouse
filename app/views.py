@@ -15,11 +15,11 @@ def search():
 
 @app.route('/search_results/<serviceArea>/<query>/<int:page>')
 def search_results(query,serviceArea='all_serviceArea', page = 1):
-    print query
+    #print query
     if serviceArea.startswith('all'):
-        pagination = models.Tool.query.whoosh_search(query, MAX_SEARCH_RESULTS, or_=True).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
+        pagination = models.Tool.query.whoosh_search(query, MAX_SEARCH_RESULTS).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
     else:
-        pagination = models.Tool.query.filter_by(ServiceArea=serviceArea).whoosh_search(query, MAX_SEARCH_RESULTS, or_=True).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
+        pagination = models.Tool.query.filter_by(ServiceArea=serviceArea).whoosh_search(query, MAX_SEARCH_RESULTS).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
 
     #print pagination
     results = pagination.items
