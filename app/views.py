@@ -11,7 +11,7 @@ def search():
     search_form = SearchForm()
     g.search_form = search_form
     #print g.search_form.search.data
-    return redirect(url_for('search_results', query = g.search_form.search.data , page = 1,serviceArea = 'all_serviceArea' ))
+    return redirect(url_for('search_results', query = g.search_form.search.data , page = 1, serviceArea ='all_serviceArea'))
 
 @app.route('/search_results/<serviceArea>/<query>/<int:page>')
 def search_results(query,serviceArea='all_serviceArea', page = 1):
