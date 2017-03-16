@@ -53,29 +53,22 @@ def tool(page = 1, serviceArea= 'all_serviceArea',query='all' ,SiteNameString=Si
                             serviceArea= serviceArea,
                             SiteNameString=SiteNameString
                             )
-
-@app.route('/developer/<developerName>')
-def developer(developerName):
-    developer = models.Developer.query.filter(models.Developer.NameString == developerName).first()
-    tools = [  # fake array of tools
-        {
-            'author': {'nickname': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'nickname': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    tabs = [  # fake array of tabs
-        {
-            'tab_href': 'all',
-            'Name': 'all',
-        },
-    ]
-    #print type(developerName)
+@app.route('/developer', methods = ['GET','POST'])
+@app.route('/developer/<serviceArea>/<developerName>/<int:page>', methods = ['GET','POST'])
+def developer(developerName, page = 1, serviceArea= 'all_serviceArea', SiteNameString=SiteNameString):
+    developerID = models.Developer.query.filter_by(NameString = developerName).first().id
+    toolID = models.Developer_tool_map.query.filter_by(developer_id = developerID)
+    if serviceArea.startswith('all'):
+        pagination = models.Tool.query.filter_by(models.Tool.developer_tool_mapping.has(models.Tool.developer_tool_mapping.developer_id==developerID)).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
+    else:
+        pagination = models.Tool.query.filter_by(models.Tool.developer_tool_mapping.has(models.Tool.developer_tool_mapping.developer_id==developerID)).filter_by(ServiceArea=serviceArea).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
+    tools = pagination.items
     return render_template("developer.html",
-                           title=developerName + " created tools",
                            developer=developer,
-                           tools=tools,
-                           tabs=tabs)
+                           toolScope=tools,
+                           pagination=pagination,
+                           tabs=tabs,
+                           endpoint='developer',
+                           serviceArea= serviceArea,
+                           SiteNameString=SiteNameString
+                           )

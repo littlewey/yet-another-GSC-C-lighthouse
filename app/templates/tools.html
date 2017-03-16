@@ -5,20 +5,15 @@
                 <div class="collapsible-header">
                     {{tool.NameString}}
                 </div>
-                
                 <div class="collapsible-body">
                 <div class="card teal lighten-2 hoverable">
                     <div class="card-content white-text">
-                        
                         <span class="card-title truncate grey-text text-lighten-4">
-                            
                             Created by: {{tool.DeveloperList}}
-                            
                         </span>
                         <div class="h5 teal-text text-lighten-5">
                             <p>Keywords: {{tool.KeyWordList}}</p>
                         </div>
-                        
                         <div class="h6 teal-text text-lighten-4">
                             <p>{{tool.ImplementedDate}} </p>
                             <br>
@@ -57,7 +52,6 @@
                         <a class="white-text">
                             <span class="valign"><i class="material-icons ">trending_up</i>  <b class="h1">{{tool.DownloadTimes}}</b></span>
                         </a>
-
                     </div>
                 </div>
                </div>
@@ -73,7 +67,6 @@
             {% else %}
                 {% set serviceArea = 'all_serviceArea' %}
             {% endif%}
-            
             {% if pagination.has_prev %}<li class="waves-effect"><a href="{{ url_for(endpoint,serviceArea=serviceArea, query = query , page = pagination.prev_num) }}" ><i class="material-icons">chevron_left</i></a></li>
             {% else %}<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
             {% endif %}
