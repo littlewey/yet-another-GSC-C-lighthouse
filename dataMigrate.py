@@ -130,25 +130,24 @@ def existsInDB_GotID(className, objectName):
     if db.session.query(exists().where(internal_name == objectName)).scalar():
         return className.query.filter(internal_name == objectName).first().id
     else:
-        return False  
+        return False
 
 
 for toolIndex in range(1, len(data_ToolName)):
     thisTool = models.Tool(
-        ServiceArea  = data_ServiceArea[toolIndex] , 
-        NameString  = data_ToolName[toolIndex] , 
-        DeveloperList  = ", ".join(data_Developer[toolIndex]) , 
-        KeyWordList  = ", ".join(data_KeyWords[toolIndex]) , 
-        InnovatorName  = ", ".join(data_InnovatorName[toolIndex]) , 
-        Description  = data_Description[toolIndex] , 
-        ToolUrlOnLightHouse  = data_ToolUrlOnLightHouse[toolIndex] , 
-        Rates  = data_Rates[toolIndex] , 
-        DownloadTimes  = data_DownloadTimes[toolIndex] , 
-        ImplementedDate  = data_ImplementedDate[toolIndex] 
+        ServiceArea  = data_ServiceArea[toolIndex] ,
+        NameString  = data_ToolName[toolIndex] ,
+        DeveloperList  = ", ".join(data_Developer[toolIndex]) ,
+        KeyWordList  = ", ".join(data_KeyWords[toolIndex]) ,
+        InnovatorName  = ", ".join(data_InnovatorName[toolIndex]) ,
+        Description  = data_Description[toolIndex] ,
+        ToolUrlOnLightHouse  = data_ToolUrlOnLightHouse[toolIndex] ,
+        Rates  = data_Rates[toolIndex] ,
+        DownloadTimes  = data_DownloadTimes[toolIndex] ,
+        ImplementedDate  = data_ImplementedDate[toolIndex]
         )
 #   print ", ".join(data_KeyWords[toolIndex])
 #   print thisTool
-    
     db.session.add(thisTool)
     #db.session.commit()
     if len(data_Developer[toolIndex]) != 0:
@@ -160,7 +159,6 @@ for toolIndex in range(1, len(data_ToolName)):
             developer_tool_mapping = models.Developer_tool_map(tool_id = thisTool.id, developer_id = existsInDB_GotID(models.Developer,developerName))
             db.session.add(developer_tool_mapping)
             #db.session.commit()
-
     if len(data_KeyWords[toolIndex]) != 0:
         for keywordName in data_KeyWords[toolIndex]:
             if not existsInDB_GotID(models.Keyword,keywordName):
@@ -172,9 +170,4 @@ for toolIndex in range(1, len(data_ToolName)):
             #db.session.commit()
 db.session.commit()
 
-
-
-
-
-    
 
