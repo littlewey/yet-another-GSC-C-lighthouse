@@ -56,19 +56,20 @@ def tool(page = 1, serviceArea= 'all_serviceArea',query='all' ,SiteNameString=Si
 @app.route('/developer', methods = ['GET','POST'])
 @app.route('/developer/<serviceArea>/<developerName>/<int:page>', methods = ['GET','POST'])
 def developer(developerName, page = 1, serviceArea= 'all_serviceArea', SiteNameString=SiteNameString):
-    developerID = models.Developer.query.filter_by(NameString = developerName).first().id
-    toolID = models.Developer_tool_map.query.filter_by(developer_id = developerID)
+    #print developerName
     if serviceArea.startswith('all'):
-        pagination = models.Tool.query.filter(models.Tool.developer_tool_mapping.has(developer_id==developerID)).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
+        pagination = models.Tool.query.whoosh_search(developerName, fields=('DeveloperList',)).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
     else:
-        pagination = models.Tool.query.filter(models.Tool.developer_tool_mapping.has(developer_id==developerID)).filter_by(ServiceArea=serviceArea).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
+        pagination = models.Tool.query.whoosh_search(developerName, fields=('DeveloperList',)).filter_by(ServiceArea=serviceArea).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
     tools = pagination.items
+    #print tools
     return render_template("developer.html",
-                           developer=developer,
+                           developerName=developerName,
                            toolScope=tools,
                            pagination=pagination,
                            tabs=tabs,
                            endpoint='developer',
                            serviceArea= serviceArea,
-                           SiteNameString=SiteNameString
+                           SiteNameString=SiteNameString,
+                           title = 'Tools created by '+developerName
                            )
