@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+
     {% for tab in tabs %}
     {% if pageIter %}
     {% else %}
@@ -22,7 +23,27 @@
     </div>
   </nav>
 
-{% include 'tools.html' %}
 
+<div class="row">
+  <div class="col s12 m4 l3">
+    <div class="card hoverable">
+      <div class="card-image">
+        <img src= "{{ STATIC_PREFIX }}static/images/developer.png">
+        <span class="card-title white-text">{{ developerName }}<span>
+      </div>
+      <div class="card-content">
+        <p>Ping {{ developerName}} via below link</p>
+      </div>
+      <div class="card-action">
+        <a href="https://***REMOVED***/people?query={{ developerName }}">Find</a>
+        <a href="https://***REMOVED***/sites/searchcenter/Pages/peopleresults.aspx?k={{ developerName }}">myNet</a>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m8 l9">
+    {% include 'tools.html' %}
+  </div>
+
+</div>
 {% endblock %}
 

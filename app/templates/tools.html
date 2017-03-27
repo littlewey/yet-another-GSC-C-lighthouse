@@ -1,4 +1,3 @@
-    <div class="container">
         <ul class="collapsible popout" data-collapsible="expandable">
             {% for tool in toolScope %}
             <li>
@@ -9,7 +8,7 @@
                 <div class="card teal lighten-2 hoverable">
                     <div class="card-content white-text">
                         <span class="card-title truncate grey-text text-lighten-4">
-                            Created by: {{tool.DeveloperList}}
+                            Created by: <a href="{{ STATIC_PREFIX }}/developer/all/{{tool.DeveloperList}}#### here ###
                         </span>
                         <div class="h5 teal-text text-lighten-5">
                             <p>Keywords: {{tool.KeyWordList}}</p>
@@ -85,4 +84,3 @@
             {% else %}<li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
             {% endif %}
         </ul>
-    </div>

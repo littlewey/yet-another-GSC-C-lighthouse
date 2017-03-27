@@ -18,6 +18,9 @@ pip install flask_wtf
 ./dataMigrate.py
 ./run.py
 ```
+# Rights
+used photo https://unsplash.com/photos/GYNxcQvBNzA Rights reserved by Etienne Desclides( https://unsplash.com/@atn )
+
 # Cleanup
 ```
 rm -fr *.db
