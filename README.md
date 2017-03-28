@@ -32,3 +32,17 @@ used photo https://unsplash.com/photos/GYNxcQvBNzA Rights reserved by Etienne De
 rm -fr *.db
 rm -fr db_repository
 ```
+
+# Deployment with nginx
+```
+(env)# apt-get install nginx
+(env)# pip install gunicorn
+(env)# vi wsgi.py
+#!env/bin/python
+from app import app
+application = app
+if __name__ == “__main__”:
+    application.run()
+
+(env)# gunicorn -w 4 -b 127.0.0.1:8080 wsgi
+```
