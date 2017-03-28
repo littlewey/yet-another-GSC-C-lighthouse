@@ -8,10 +8,13 @@
                 <div class="card teal lighten-2 hoverable">
                     <div class="card-content white-text">
                         <span class="card-title truncate grey-text text-lighten-4">
-                            Created by: <a href="{{ STATIC_PREFIX }}/developer/all/{{tool.DeveloperList}}#### here ###
+                            Created by: {% set developerListToolsDotHtml = tool.DeveloperList.split(',') %} {% for developerToolsDotHtml in developerListToolsDotHtml %}
+                            <b><a href="/developer/all/{{ developerToolsDotHtml }}/1" class="white-text" >{{ developerToolsDotHtml }}</a></b>{% endfor %}
                         </span>
                         <div class="h5 teal-text text-lighten-5">
-                            <p>Keywords: {{tool.KeyWordList}}</p>
+                            <p>Keywords: {% set keyWordListToolsDotHtml = tool.KeyWordList.split(',') %} {% for keyWordToolsDotHtml in keyWordListToolsDotHtml %}
+                            <b><a href="/keyword/all/{{ keyWordToolsDotHtml }}/1" class="red-text text-lighten-5">{{ keyWordToolsDotHtml }}</a></b>{% endfor %}
+                            </p>
                         </div>
                         <div class="h6 teal-text text-lighten-4">
                             <p>{{tool.ImplementedDate}} </p>
