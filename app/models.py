@@ -23,7 +23,6 @@ class Tool(db.Model):
     ImplementedDate = db.Column(db.String(64), index = True, unique = False)
     developer_tool_mapping = db.relationship('Developer_tool_map', backref='tool', lazy='dynamic')
     keyword_tool_mapping = db.relationship('Keyword_tool_map', backref='tool', lazy='dynamic')
-
     def __repr__(self):
         return '<Tool %r>' % (self.NameString)
 

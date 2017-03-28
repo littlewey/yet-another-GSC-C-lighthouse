@@ -56,13 +56,11 @@ def tool(page = 1, serviceArea= 'all_serviceArea',query='all' ,SiteNameString=Si
 @app.route('/developer', methods = ['GET','POST'])
 @app.route('/developer/<serviceArea>/<developerName>/<int:page>', methods = ['GET','POST'])
 def developer(developerName, page = 1, serviceArea= 'all_serviceArea', SiteNameString=SiteNameString):
-    #print developerName
     if serviceArea.startswith('all'):
         pagination = models.Tool.query.whoosh_search(developerName, fields=('DeveloperList',)).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
     else:
         pagination = models.Tool.query.whoosh_search(developerName, fields=('DeveloperList',)).filter_by(ServiceArea=serviceArea).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
     tools = pagination.items
-    #print tools
     return render_template("developer.html",
                            developerName=developerName,
                            toolScope=tools,
@@ -72,4 +70,23 @@ def developer(developerName, page = 1, serviceArea= 'all_serviceArea', SiteNameS
                            serviceArea= serviceArea,
                            SiteNameString=SiteNameString,
                            title = 'Tools created by '+developerName
+                           )
+
+@app.route('/keyword', methods = ['GET','POST'])
+@app.route('/keyword/<serviceArea>/<keywordName>/<int:page>', methods = ['GET','POST'])
+def keyword(keywordName, page = 1, serviceArea= 'all_serviceArea', SiteNameString=SiteNameString):
+    if serviceArea.startswith('all'):
+        pagination = models.Tool.query.whoosh_search(keywordName, fields=('KeyWordList',)).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
+    else:
+        pagination = models.Tool.query.whoosh_search(keywordName, fields=('KeyWordList',)).filter_by(ServiceArea=serviceArea).order_by(models.Tool.DownloadTimes.desc()).paginate(page, per_page=TOOLS_PER_PAGE, error_out = False)
+    tools = pagination.items
+    return render_template("keyword.html",
+                           keywordName=keywordName,
+                           toolScope=tools,
+                           pagination=pagination,
+                           tabs=tabs,
+                           endpoint='keyword',
+                           serviceArea= serviceArea,
+                           SiteNameString=SiteNameString,
+                           title = 'Keyword: '+keywordName
                            )

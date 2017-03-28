@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    {% for tab in tabs %}
+    {% if pageIter %}
+    {% else %}
+        {% set pageIter = 1 %}
+    {% endif %}
+    {% if query%}
+    {% else %}
+        {% set query = 'all' %}
+    {% endif %}
+    <li class="tab">
+        <a target="_self"•
+           {% if tab.Name == serviceArea %} class="active" {% endif %}
+            href="{{url_for(endpoint,serviceArea=tab.tab_href, keywordName=keywordName, page=pageIter)}}"
+        >
+        {{tab.Name}}
+        </a></li>
+    {% endfor %}
+        </ul>
+    </div>
+  </nav>
+
+
+<div class="row">
+  <div class="col s12 m4 l3">
+    <div class="card hoverable">
+        <div class="card-panel teal lighten-1">
+          <span class="white-text">
+            Keyword: <b>{{ keywordName }}</b>
+          </span>
+        </div>
+    </div>
+  </div>
+  <div class="col s12 m8 l9">
+    {% include 'tools.html' %}
+  </div>
+
+</div>
+{% endblock %}
+

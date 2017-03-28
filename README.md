@@ -11,6 +11,12 @@ pip install html2text
 pip install Flask-WhooshAlchemy-Redux
 pip install sqlalchemy-migrate
 pip install flask_wtf
+pip install -U pytagcloud
+    apt-get install python-pygame
+    apt-get build-dep python-pygame
+    pip install pygame
+    pip install simplejson
+pip install -U nltk
 ```
 # A fresh setup sqlite
 ```

@@ -10,10 +10,14 @@ sys.setdefaultencoding('utf8')
 
 from app import db, models
 from sqlalchemy.sql import exists
+from pytagcloud import create_html_data, make_tags
+from pytagcloud.lang.counter import get_tag_counts
+
 
 workbookInRAM = load_workbook('data/defaultData.xlsx')
 worksheetInRAM = workbookInRAM.active
 
+tagCloudInput = str()
 
 # Functions validateLists
 # Validation of Name lists
@@ -169,5 +173,13 @@ for toolIndex in range(1, len(data_ToolName)):
             db.session.add(keyword_tool_mapping)
             #db.session.commit()
 db.session.commit()
+tagCloudInputList = []
+for index in range(1,len(data_KeyWords)):
+    tagCloudInputList.append(','.join(data_KeyWords[index]))
+print type(tagCloudInputList)
+tagCloudInput = ','.join(tagCloudInputList)
 
+tags = make_tags(get_tag_counts(tagCloudInput),maxsize=80)
+cloudHtmlString = create_html_data(tags)
 
+print cloudHtmlString
