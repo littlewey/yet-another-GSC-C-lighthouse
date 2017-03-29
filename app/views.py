@@ -90,3 +90,11 @@ def keyword(keywordName, page = 1, serviceArea= 'all_serviceArea', SiteNameStrin
                            SiteNameString=SiteNameString,
                            title = 'Keyword: '+keywordName
                            )
+@app.route('/wiki', methods = ['GET','POST'])
+def wiki():
+    return render_template("wiki.html",
+                           endpoint='wiki',
+                           SiteNameString=SiteNameString,
+                           title = 'Search Innodex',
+                           )
+
