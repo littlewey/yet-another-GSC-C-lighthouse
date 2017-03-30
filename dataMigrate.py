@@ -10,8 +10,8 @@ sys.setdefaultencoding('utf8')
 
 from app import db, models
 from sqlalchemy.sql import exists
-from pytagcloud import create_html_data, make_tags
-from pytagcloud.lang.counter import get_tag_counts
+#from pytagcloud import create_html_data, make_tags
+#from pytagcloud.lang.counter import get_tag_counts
 
 
 workbookInRAM = load_workbook('data/defaultData.xlsx')
