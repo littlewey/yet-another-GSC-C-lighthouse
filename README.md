@@ -1,5 +1,7 @@
 # yet-another-GSC-C-lighthouse
 Yet another front end for innovation catalog discover service for GSC China Lighthouse database.
+# Promo video about this project
+[https://vimeo.com/219328622]
 
 # requriement
 Frontend framework Materialize was used materialize-v0.98.0.
