@@ -10,7 +10,7 @@ This was my first side project triggering me design layout, db scehma as mention
 
 A promo video was created by me and voiced by Michael Shi, click for watching it on [viemo](https://vimeo.com/219328622).
 
-[![screen_inno_promo](README/screen_inno_promo.png)](https://vimeo.com/219328622)
+[![screen_inno_promo](README/screen_inno_promo_play.png)](https://vimeo.com/219328622)
 
 
 
