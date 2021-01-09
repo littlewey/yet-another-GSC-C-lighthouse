@@ -1,11 +1,29 @@
-# yet-another-GSC-C-lighthouse
-Yet another front end for innovation catalog discover service for GSC China Lighthouse database.
-# Promo video about this project
-[https://vimeo.com/219328622]
+# Yet another Lighthouse
 
-# requriement
+Lighthouse was an automation/ tool sharing platform in my origization many years ago and this project was a PoC to redesign it, built with Flask and Materialize CSS.
+
+This was my first side project triggering me design layout, db scehma as mentioned in [about me](https://note.siwei.info/about/), which end up being a developer years later.
+
+![inno-search_demo](README/inno-search_demo.gif)
+
+## Promo video
+
+A promo video was created by me and voiced by Michael Shi, click for watching it on [viemo](https://vimeo.com/219328622).
+
+[![screen_inno_promo](README/screen_inno_promo.png)](https://vimeo.com/219328622)
+
+
+
+## Database Schema
+
+![database_schema](README/database_schema.png)
+
+## How To
+
+### requriement
 Frontend framework Materialize was used materialize-v0.98.0.
 Python html2text by Aaron Swartz was used: https://github.com/aaronsw/html2text
+
 ```
 pip install flask
 pip install openpyxl
@@ -20,22 +38,19 @@ pip install -U pytagcloud
     pip install simplejson
 pip install -U nltk
 ```
-# A fresh setup sqlite
+### A fresh setup sqlite
 ```
 ./db_create.py
 ./dataMigrate.py
 ./run.py
 ```
-# Rights
-used photo https://unsplash.com/photos/GYNxcQvBNzA Rights reserved by Etienne Desclides( https://unsplash.com/@atn )
-
-# Cleanup
+### Cleanup
 ```
 rm -fr *.db
 rm -fr db_repository
 ```
 
-# Deployment with nginx
+### Deployment with nginx
 ```
 (env)# apt-get install nginx
 (env)# pip install gunicorn
@@ -64,3 +79,7 @@ server {
   }
 
 ```
+
+## Rights
+
+used photo https://unsplash.com/photos/GYNxcQvBNzA Rights reserved by Etienne Desclides( https://unsplash.com/@atn )
